@@ -1,0 +1,139 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* hsl(318, 51%, 57%) */
+
+  header {
+    background-color: hsl(295, 76%, 53%);
+    text-align: center;
+    padding: 1em;
+  }
+  
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .image-container {
+    position: relative;
+    flex-basis: 300px;
+    overflow: hidden;
+  }
+  
+  .image-container img {
+    width: 100%;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+  }
+  
+  .image-container img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Text Overlay */
+  .text-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(100%); /* Start hidden off-screen */
+  }
+  
+  .image-container:hover .text-overlay {
+    opacity: 1;
+    transform: translateY(0); /* Slide up into view */
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+  
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .image-container {
+      flex-basis: 200px;
+    }
+  
+    .modal-content {
+      width: 90%;
+    }
+  }
+
+  .text-overlay {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .image-container:hover .text-overlay {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .text-overlay {
+    transform: translateX(-100%); /* Offscreen to the left */
+  }
+  
+  .image-container:hover .text-overlay {
+    transform: translateX(0); /* Slide in from left */
+  }
+
+  .text-overlay h2 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition-delay: 0.2s;
+  }
+  
+  .text-overlay p {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: 0.4s;
+  }
+  
+  .image-container:hover .text-overlay h2,
+  .image-container:hover .text-overlay p {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
